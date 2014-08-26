@@ -1,5 +1,5 @@
 require "lattes_api/version"
 
 module LattesApi
-  # Your code goes here...
+  autoload :Client, 'lattes_api/client'
 end

@@ -5,4 +5,5 @@ Dir[File.join(File.dirname(__FILE__), 'support', '**', '*.rb')].each do |f|
 end
 
 RSpec.configure do |config|
+
 end
