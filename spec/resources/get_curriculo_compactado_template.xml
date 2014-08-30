@@ -1,0 +1,9 @@
+<env:Envelope xmlns:env='http://schemas.xmlsoap.org/soap/envelope/'>
+  <env:Header>
+  </env:Header>
+  <env:Body>
+    <tns:getCurriculoCompactadoResponse xmlns:tns='http://ws.servico.repositorio.cnpq.br/'>
+      <return>$$value$$</return>
+    </tns:getCurriculoCompactadoResponse>
+  </env:Body>
+</env:Envelope>
