@@ -6,7 +6,7 @@ require 'lattes_api/version'
 Gem::Specification.new do |spec|
   spec.name          = "lattes_api"
   spec.version       = LattesApi::VERSION
-  spec.authors       = ["Rodrigo Manhães"]
+  spec.authors       = ["Rodrigo Manhaes"]
   spec.email         = ["rmanhaes@gmail.com"]
   spec.summary       = %q{Lattes API client for Ruby.}
   spec.description   = %q{Lattes API client for Ruby.}
