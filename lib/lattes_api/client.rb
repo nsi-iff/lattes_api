@@ -22,7 +22,7 @@ module LattesApi
       zip_file = File.open("#{path}#{id_cnpq}.zip", 'wb')
       zip_file.write(decoded)
       zip_file.close
-      id_cnpq
+
     end
 
     private
