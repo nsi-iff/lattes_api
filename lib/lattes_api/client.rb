@@ -14,15 +14,9 @@ module LattesApi
       response.body[:get_identificador_cn_pq_response][:return]
     end
 
-    def get_curriculo_compactado(id_cnpq,path="/tmp/")
-
+    def get_curriculo_compactado(id_cnpq)
       response = @client.call(:get_curriculo_compactado, message: {id: id_cnpq})
-      encoded = response.body[:get_curriculo_compactado_response][:return]
-      decoded = Base64.decode64(encoded)
-      zip_file = File.open("#{path}#{id_cnpq}.zip", 'wb')
-      zip_file.write(decoded)
-      zip_file.close
-
+      response.body[:get_curriculo_compactado_response][:return]
     end
 
     private
