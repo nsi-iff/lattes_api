@@ -3,7 +3,7 @@ require 'base64'
 require 'zip'
 
 module LattesApi
-  class Client
+  class Api
     def initialize
       @client = Savon.client(wsdl: wsdl, endpoint: endpoint)
     end

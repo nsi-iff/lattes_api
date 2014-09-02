@@ -7,7 +7,7 @@ describe LattesApi do
   let(:id_cnpq) { '1234567890123456' }
   let(:cpf) { '123.456.789-09' }
 
-  let(:client) { LattesApi::Client.new }
+  let(:client) { LattesApi::Api.new }
 
   it 'check version' do
     expect(LattesApi::VERSION).to eq '0.0.1'

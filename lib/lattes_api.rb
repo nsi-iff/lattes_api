@@ -1,6 +1,6 @@
 require "lattes_api/version"
 
 module LattesApi
-  autoload :Client, 'lattes_api/client'
+  autoload :Api, 'lattes_api/api'
   autoload :AccessDenied, 'lattes_api/access_denied'
 end
