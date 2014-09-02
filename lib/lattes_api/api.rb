@@ -1,6 +1,4 @@
 require 'savon'
-require 'base64'
-require 'zip'
 
 module LattesApi
   class Api
@@ -16,7 +14,8 @@ module LattesApi
     end
 
     def get_curriculo_compactado(id_cnpq)
-      response = @client.call(:get_curriculo_compactado, message: {id: id_cnpq})
+      response = @client.call(
+        :get_curriculo_compactado, message: { id: id_cnpq })
       result = response.body[:get_curriculo_compactado_response][:return]
       fail_or_return result
     end
