@@ -9,10 +9,6 @@ describe LattesApi do
 
   let(:client) { LattesApi::Api.new }
 
-  it 'check version' do
-    expect(LattesApi::VERSION).to eq '0.0.1'
-  end
-
   describe 'getIdentificadorCNPq(cpf)' do
     let(:message) do
       { cpf: cpf, nomeCompleto: nil, dataNascimento: nil }
