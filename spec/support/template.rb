@@ -11,6 +11,10 @@ module LattesApi::Template
       Base64.encode64(File.open(
         "spec/resources/#{return_value}_test.zip", 'rb') { |io| io.read })
   end
+
+  def access_denied(operation)
+    File.read('spec/resources/access_denied.xml').gsub('$$value$$', operation)
+  end
 end
 
 RSpec.configure {|config| config.include LattesApi::Template }

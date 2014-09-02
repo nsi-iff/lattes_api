@@ -11,20 +11,48 @@ describe LattesApi do
     expect(LattesApi::VERSION).to eq '0.0.1'
   end
 
-  it 'getIdentificadorCNPq(cpf)' do
-    message = { cpf: cpf, nomeCompleto: nil, dataNascimento: nil }
-    savon.expects(:get_identificador_cn_pq).with(message: message).returns(
-      response(:get_identificador_cnpq, id_cnpq))
-    client = LattesApi::Client.new
-    expect(client.get_identificador_cnpq(cpf)).to eq id_cnpq
+  describe 'getIdentificadorCNPq(cpf)' do
+    let(:message) do
+      { cpf: cpf, nomeCompleto: nil, dataNascimento: nil }
+    end
+
+    it 'happy path' do
+      savon.expects(:get_identificador_cn_pq).with(message: message).returns(
+        response(:get_identificador_cnpq, id_cnpq))
+      client = LattesApi::Client.new
+      expect(client.get_identificador_cnpq(cpf)).to eq id_cnpq
+    end
+
+    it 'access denied' do
+      savon.expects(:get_identificador_cn_pq).
+        with(message: message).
+        returns(access_denied('getIdentificadorCNPq'))
+      client = LattesApi::Client.new
+      expect {
+        client.get_identificador_cnpq(cpf)
+      }.to raise_error LattesApi::AccessDenied
+    end
   end
 
-  it 'getCurriculoCompactado(id)' do
-    message = { id: id_cnpq }
-    result = encodeFile(id_cnpq)
-    savon.expects(:get_curriculo_compactado).with(message: message).returns(
-      response(:get_curriculo_compactado, result))
-    client = LattesApi::Client.new
-    expect(client.get_curriculo_compactado(id_cnpq)).to eq result
+  describe 'getCurriculoCompactado(id)' do
+    let(:message) { { id: id_cnpq } }
+
+    it 'happy path' do
+      result = encodeFile(id_cnpq)
+      savon.expects(:get_curriculo_compactado).with(message: message).returns(
+        response(:get_curriculo_compactado, result))
+      client = LattesApi::Client.new
+      expect(client.get_curriculo_compactado(id_cnpq)).to eq result
+    end
+
+    it 'access denied' do
+      savon.expects(:get_curriculo_compactado).
+        with(message: message).
+        returns(access_denied('getCurriculoCompactado'))
+      client = LattesApi::Client.new
+      expect {
+        client.get_curriculo_compactado(id_cnpq)
+      }.to raise_error LattesApi::AccessDenied
+    end
   end
 end

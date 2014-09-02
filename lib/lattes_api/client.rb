@@ -11,15 +11,22 @@ module LattesApi
     def get_identificador_cnpq(cpf)
       response = @client.call(:get_identificador_cn_pq, message: { cpf: cpf,
         nomeCompleto: nil, dataNascimento: nil })
-      response.body[:get_identificador_cn_pq_response][:return]
+      result = response.body[:get_identificador_cn_pq_response][:return]
+      fail_or_return result
     end
 
     def get_curriculo_compactado(id_cnpq)
       response = @client.call(:get_curriculo_compactado, message: {id: id_cnpq})
-      response.body[:get_curriculo_compactado_response][:return]
+      result = response.body[:get_curriculo_compactado_response][:return]
+      fail_or_return result
     end
 
     private
+
+    def fail_or_return(result)
+      raise LattesApi::AccessDenied if result =~ /Servi.+o negado\.IP/
+      result
+    end
 
     def endpoint
       'http://servicosweb.cnpq.br/srvcurriculo/WSCurriculo'

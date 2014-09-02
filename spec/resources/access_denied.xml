@@ -1,0 +1,9 @@
+<env:Envelope xmlns:env='http://schemas.xmlsoap.org/soap/envelope/'>
+  <env:Header>
+  </env:Header>
+  <env:Body>
+    <tns:$$value$$Response xmlns:tns='http://ws.servico.repositorio.cnpq.br/'>
+      <return>&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;&lt;MENSAGEM&gt;&lt;ERRO&gt;Servi\xC3\xA7o negado.IP:111.111.111.111.&lt;/ERRO&gt;&lt;/MENSAGEM&gt;</return>
+    </tns:$$value$$Response>
+  </env:Body>
+</env:Envelope>
